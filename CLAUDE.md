@@ -21,11 +21,21 @@ Act as a tutorial guide. When implementing features, explain *why* each piece wo
 
 Standard library modules used in this project:
 
+Standard library (used in the thread-based implementation):
+
 - [`std::net`](https://doc.rust-lang.org/std/net/index.html) — `TcpListener`, `TcpStream`, `SocketAddr`
 - [`std::io`](https://doc.rust-lang.org/std/io/index.html) — `Read`, `Write`, `BufReader`
 - [`std::thread`](https://doc.rust-lang.org/std/thread/index.html) — spawning threads to handle concurrent connections
+- [`std::sync::mpsc`](https://doc.rust-lang.org/std/sync/mpsc/index.html) — channel for sending jobs to worker threads
+- [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html) — shared ownership across threads
+- [`std::sync::Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html) — mutual exclusion for shared receiver
 
-> Update this section as new crates are added to `Cargo.toml`.
+Tokio (async implementation):
+
+- [`tokio::net::TcpListener`](https://docs.rs/tokio/latest/tokio/net/struct.TcpListener.html) — async TCP listener
+- [`tokio::net::TcpStream`](https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html) — async TCP stream, `split()` for separate read/write halves
+- [`tokio::io::AsyncBufReadExt`](https://docs.rs/tokio/latest/tokio/io/trait.AsyncBufReadExt.html) — `read_line` on async `BufReader`
+- [`tokio::io::AsyncWriteExt`](https://docs.rs/tokio/latest/tokio/io/trait.AsyncWriteExt.html) — `write_all`, `flush` on async `BufWriter`
 
 ## Project
 
